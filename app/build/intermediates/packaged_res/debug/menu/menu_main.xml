@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_filter"
+        android:icon="@drawable/ic_filter"
+        android:title="@string/filter"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/filter_all"
+                android:title="@string/filter_all"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/filter_active"
+                android:title="@string/filter_active"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/filter_completed"
+                android:title="@string/filter_completed"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/filter_high_priority"
+                android:title="@string/filter_high_priority"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/filter_medium_priority"
+                android:title="@string/filter_medium_priority"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/filter_low_priority"
+                android:title="@string/filter_low_priority"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/filter_due_today"
+                android:title="@string/filter_due_today"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/filter_overdue"
+                android:title="@string/filter_overdue"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+</menu> 

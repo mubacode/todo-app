@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Liste de tâches</string>
+    
+    <!-- Main Activity -->
+    <string name="search_hint">Rechercher des tâches…</string>
+    <string name="add_task">Ajouter une tâche</string>
+    <string name="empty_state_message">Aucune tâche. Appuyez sur + pour en ajouter une !</string>
+    <string name="edit_task">Modifier la tâche</string>
+    <string name="save">Enregistrer</string>
+    <string name="cancel">Annuler</string>
+    <string name="delete">Supprimer</string>
+    <string name="delete_task">Supprimer la tâche</string>
+    <string name="delete_task_confirmation">Voulez-vous vraiment supprimer cette tâche ?</string>
+    <string name="filter">Filtrer</string>
+    
+    <!-- Task Dialog -->
+    <string name="task_title">Titre</string>
+    <string name="task_description">Description</string>
+    <string name="due_date">Date d\'échéance</string>
+    <string name="reminder_time">Heure de rappel</string>
+    <string name="priority">Priorité</string>
+    <string name="category">Catégorie</string>
+    
+    <!-- Task Item -->
+    <string name="task_due">Échéance: %1$s</string>
+    <string name="edit_task_description">Modifier la tâche</string>
+    <string name="delete_task_description">Supprimer la tâche</string>
+    <string name="reminder_time_format">%1$s</string>
+    
+    <!-- Filter Options -->
+    <string name="filter_all">Toutes les tâches</string>
+    <string name="filter_active">Tâches actives</string>
+    <string name="filter_completed">Tâches terminées</string>
+    <string name="filter_high_priority">Tâches à priorité haute</string>
+    <string name="filter_medium_priority">Tâches à priorité moyenne</string>
+    <string name="filter_low_priority">Tâches à priorité basse</string>
+    <string name="filter_due_today">Pour aujourd\'hui</string>
+    
+    <!-- Priorities -->
+    <string name="priority_high">Haute</string>
+    <string name="priority_medium">Moyenne</string>
+    <string name="priority_low">Basse</string>
+    
+    <!-- Categories -->
+    <string name="category_personal">Personnel</string>
+    <string name="category_work">Travail</string>
+    <string name="category_shopping">Courses</string>
+    <string name="category_health">Santé</string>
+    <string name="category_other">Autre</string>
+    
+    <!-- Language Selection -->
+    <string name="language_hint">Sélectionner la langue</string>
+    <string name="language_english">Anglais</string>
+    <string name="language_turkish">Turc</string>
+    <string name="language_polish">Polonais</string>
+    <string name="language_german">Allemand</string>
+    <string name="language_french">Français</string>
+    <string name="language_spanish">Espagnol</string>
+    <string name="language_italian">Italien</string>
+    
+    <!-- Date and Time Formats -->
+    <string name="due_date_format">Échéance: %s</string>
+    
+    <!-- Month Names -->
+    <string name="month_january">Janvier</string>
+    <string name="month_february">Février</string>
+    <string name="month_march">Mars</string>
+    <string name="month_april">Avril</string>
+    <string name="month_may">Mai</string>
+    <string name="month_june">Juin</string>
+    <string name="month_july">Juillet</string>
+    <string name="month_august">Août</string>
+    <string name="month_september">Septembre</string>
+    <string name="month_october">Octobre</string>
+    <string name="month_november">Novembre</string>
+    <string name="month_december">Décembre</string>
+    
+    <!-- Common Words -->
+    <string name="reminder">Rappel</string>
+</resources> 

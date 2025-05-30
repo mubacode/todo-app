@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Exclude the Firestore persistence directory since we handle it in our BackupAgent -->
+    <exclude domain="file" path="com.google.firebase.firestore/" />
+    <!-- Include shared preferences -->
+    <include domain="sharedpref" path="." />
+</full-backup-content> 

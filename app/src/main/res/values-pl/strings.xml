@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lista zadań</string>
+    
+    <!-- Main Activity -->
+    <string name="search_hint">Szukaj zadań…</string>
+    <string name="add_task">Dodaj zadanie</string>
+    <string name="empty_state_message">Brak zadań. Dotknij + aby dodać!</string>
+    <string name="edit_task">Edytuj zadanie</string>
+    <string name="save">Zapisz</string>
+    <string name="cancel">Anuluj</string>
+    <string name="delete">Usuń</string>
+    <string name="delete_task">Usuń zadanie</string>
+    <string name="delete_task_confirmation">Czy na pewno chcesz usunąć to zadanie?</string>
+    <string name="filter">Filtruj</string>
+    
+    <!-- Task Dialog -->
+    <string name="task_title">Tytuł</string>
+    <string name="task_description">Opis</string>
+    <string name="due_date">Termin</string>
+    <string name="reminder_time">Czas przypomnienia</string>
+    <string name="priority">Priorytet</string>
+    <string name="category">Kategoria</string>
+    
+    <!-- Task Item -->
+    <string name="task_due">Termin: %1$s</string>
+    <string name="edit_task_description">Edytuj zadanie</string>
+    <string name="delete_task_description">Usuń zadanie</string>
+    
+    <!-- Filter Options -->
+    <string name="filter_all">Wszystkie zadania</string>
+    <string name="filter_active">Aktywne zadania</string>
+    <string name="filter_completed">Ukończone zadania</string>
+    <string name="filter_high_priority">Wysoki priorytet</string>
+    <string name="filter_medium_priority">Średni priorytet</string>
+    <string name="filter_low_priority">Niski priorytet</string>
+    <string name="filter_due_today">Na dziś</string>
+    
+    <!-- Priorities -->
+    <string name="priority_high">Wysoki</string>
+    <string name="priority_medium">Średni</string>
+    <string name="priority_low">Niski</string>
+    
+    <!-- Categories -->
+    <string name="category_personal">Osobiste</string>
+    <string name="category_work">Praca</string>
+    <string name="category_shopping">Zakupy</string>
+    <string name="category_health">Zdrowie</string>
+    <string name="category_other">Inne</string>
+    
+    <!-- Language Selection -->
+    <string name="language_hint">Wybierz język</string>
+    <string name="language_english">Angielski</string>
+    <string name="language_turkish">Turecki</string>
+    <string name="language_polish">Polski</string>
+    <string name="language_german">Niemiecki</string>
+    <string name="language_french">Francuski</string>
+    <string name="language_spanish">Hiszpański</string>
+    <string name="language_italian">Włoski</string>
+    
+    <!-- Date and Time Formats -->
+    <string name="due_date_format">Termin: %s</string>
+    <string name="reminder_time_format">Przypomnienie: %s</string>
+    
+    <!-- Month Names -->
+    <string name="month_january">Styczeń</string>
+    <string name="month_february">Luty</string>
+    <string name="month_march">Marzec</string>
+    <string name="month_april">Kwiecień</string>
+    <string name="month_may">Maj</string>
+    <string name="month_june">Czerwiec</string>
+    <string name="month_july">Lipiec</string>
+    <string name="month_august">Sierpień</string>
+    <string name="month_september">Wrzesień</string>
+    <string name="month_october">Październik</string>
+    <string name="month_november">Listopad</string>
+    <string name="month_december">Grudzień</string>
+</resources> 

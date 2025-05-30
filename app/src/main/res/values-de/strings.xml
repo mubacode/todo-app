@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aufgaben</string>
+    
+    <!-- Main Activity -->
+    <string name="search_hint">Aufgaben suchen…</string>
+    <string name="empty_state_message">Noch keine Aufgaben\nTippen Sie auf + zum Hinzufügen</string>
+    <string name="add_task">Aufgabe hinzufügen</string>
+    <string name="edit_task">Aufgabe bearbeiten</string>
+    <string name="save">Speichern</string>
+    <string name="cancel">Abbrechen</string>
+    
+    <!-- Task Dialog -->
+    <string name="title_hint">Titel</string>
+    <string name="description_hint">Beschreibung</string>
+    <string name="due_date_hint">Fälligkeitsdatum</string>
+    <string name="priority">Priorität</string>
+    <string name="category">Kategorie</string>
+    
+    <!-- Task Item -->
+    <string name="task_due">Fällig: %1$s</string>
+    <string name="edit_task_description">Aufgabe bearbeiten</string>
+    <string name="delete_task_description">Aufgabe löschen</string>
+    <string name="reminder_time_format">%1$s</string>
+    
+    <!-- Filter Options -->
+    <string name="filter_all">Alle</string>
+    <string name="filter_active">Aktiv</string>
+    <string name="filter_completed">Erledigt</string>
+    <string name="filter_high_priority">Hohe Priorität</string>
+    <string name="filter_due_today">Fällig heute</string>
+    
+    <!-- Priorities -->
+    <string name="priority_low">Niedrig</string>
+    <string name="priority_medium">Mittel</string>
+    <string name="priority_high">Hoch</string>
+    
+    <!-- Categories -->
+    <string name="category_personal">Persönlich</string>
+    <string name="category_work">Arbeit</string>
+    <string name="category_shopping">Einkaufen</string>
+    <string name="category_health">Gesundheit</string>
+    <string name="category_other">Sonstiges</string>
+    
+    <!-- Date and Time Formats -->
+    <string name="due_date_format">Fällig: %s</string>
+    
+    <!-- Month Names -->
+    <string name="month_january">Januar</string>
+    <string name="month_february">Februar</string>
+    <string name="month_march">März</string>
+    <string name="month_april">April</string>
+    <string name="month_may">Mai</string>
+    <string name="month_june">Juni</string>
+    <string name="month_july">Juli</string>
+    <string name="month_august">August</string>
+    <string name="month_september">September</string>
+    <string name="month_october">Oktober</string>
+    <string name="month_november">November</string>
+    <string name="month_december">Dezember</string>
+    
+    <!-- Common Words -->
+    <string name="reminder">Erinnerung</string>
+</resources> 
