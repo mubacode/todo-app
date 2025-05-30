@@ -35,13 +35,10 @@ A feature-rich Android Todo application built with modern Android development to
   - Turkish (Türkçe)
 
 ### Additional Features
-- 🌙 Dark mode support
 - 💾 Automatic data backup
 - 🔄 Data synchronization
 - 🔥 Firebase integration
 
-## Screenshots
-[Add your app screenshots here]
 
 ## Technical Details
 
@@ -107,7 +104,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - All contributors who helped with translations
 
 ## Contact
-Email: Mubarek Abdulazize Yasin
+Email: mubarekabdulaziz970@gmail.com
 
 Project Link: [https://github.com/mubacode/todo-app](https://github.com/mubacode/todo-app)
 
