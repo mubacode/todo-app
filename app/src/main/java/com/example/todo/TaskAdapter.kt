@@ -18,7 +18,6 @@ import com.example.todo.utils.DateTimeUtils
 import com.example.todo.utils.StringUtils
 import com.example.todo.utils.TranslationManager
 import kotlinx.coroutines.*
-import java.lang.ref.WeakReference
 import java.util.*
 
 class TaskAdapter(
@@ -39,20 +38,18 @@ class TaskAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_task, parent, false)
-        return TaskViewHolder(WeakReference(view))
+        return TaskViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val task = getItem(position)
-        holder.bind(task, position)
+        holder.bind(task)
     }
 
     override fun onViewRecycled(holder: TaskViewHolder) {
         super.onViewRecycled(holder)
-        // Cancel any ongoing translation job for this position
         activeJobs[holder.bindingAdapterPosition]?.cancel()
         activeJobs.remove(holder.bindingAdapterPosition)
-        holder.cleanup()
     }
 
     fun cleanup() {
@@ -60,109 +57,81 @@ class TaskAdapter(
         activeJobs.clear()
     }
 
-    inner class TaskViewHolder(private val itemViewRef: WeakReference<View>) : RecyclerView.ViewHolder(itemViewRef.get()!!) {
-        private var checkBox: CheckBox? = null
-        private var titleText: TextView? = null
-        private var descriptionText: TextView? = null
-        private var dueDateText: TextView? = null
-        private var reminderTimeText: TextView? = null
-        private var clockIcon: View? = null
-        private var editButton: ImageButton? = null
-        private var deleteButton: ImageButton? = null
-        private var priorityIndicator: View? = null
-
+    inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val checkBox: CheckBox = itemView.findViewById(R.id.checkBox)
+        private val titleText: TextView = itemView.findViewById(R.id.textTitle)
+        private val descriptionText: TextView = itemView.findViewById(R.id.textDescription)
+        private val dueDateText: TextView = itemView.findViewById(R.id.textDueDate)
+        private val reminderTimeText: TextView = itemView.findViewById(R.id.textReminderTime)
+        private val clockIcon: View = itemView.findViewById(R.id.clockIcon)
+        private val editButton: ImageButton = itemView.findViewById(R.id.buttonEdit)
+        private val deleteButton: ImageButton = itemView.findViewById(R.id.buttonDelete)
+        private val priorityIndicator: View = itemView.findViewById(R.id.priorityIndicator)
+        
         init {
-            itemViewRef.get()?.let { view ->
-                checkBox = view.findViewById(R.id.checkBox)
-                titleText = view.findViewById(R.id.textTitle)
-                descriptionText = view.findViewById(R.id.textDescription)
-                dueDateText = view.findViewById(R.id.textDueDate)
-                reminderTimeText = view.findViewById(R.id.textReminderTime)
-                clockIcon = view.findViewById(R.id.clockIcon)
-                editButton = view.findViewById(R.id.buttonEdit)
-                deleteButton = view.findViewById(R.id.buttonDelete)
-                priorityIndicator = view.findViewById(R.id.priorityIndicator)
-                
-                // Ensure the reminder time view is visible by default
-                reminderTimeText?.visibility = View.VISIBLE
-                clockIcon?.visibility = View.VISIBLE
-            }
-        }
-
-        fun bind(task: Task, position: Int) {
-            itemViewRef.get()?.let { itemView ->
-                checkBox?.isChecked = task.isCompleted
-                titleText?.text = task.title
-                descriptionText?.text = task.description
-
-                // Handle due date display and overdue status
-                task.dueDate?.let { dueDate ->
-                    val now = Calendar.getInstance().time
-                    val isOverdue = !task.isCompleted && dueDate.before(now)
-                    
-                    dueDateText?.apply {
-                        text = itemView.context.getString(R.string.task_due, DateTimeUtils.formatDate(dueDate))
-                        setTextColor(ContextCompat.getColor(itemView.context, 
-                            if (isOverdue) R.color.overdue_text else android.R.color.white))
-                    }
-                } ?: run {
-                    dueDateText?.text = ""
-                }
-
-                // Handle reminder time display
-                if (task.reminderTime != null) {
-                    val formattedTime = DateTimeUtils.formatTime(task.reminderTime)
-                    Log.d("TaskAdapter", "Task ${task.id}: Setting reminder time to $formattedTime")
-                    
-                    clockIcon?.visibility = View.VISIBLE
-                    reminderTimeText?.visibility = View.VISIBLE
-                    
-                    reminderTimeText?.post {
-                        reminderTimeText?.text = formattedTime
-                        reminderTimeText?.invalidate()
-                    }
-                } else {
-                    Log.d("TaskAdapter", "Task ${task.id}: No reminder time")
-                    clockIcon?.visibility = View.GONE
-                    reminderTimeText?.visibility = View.GONE
-                }
-
-                val color = when (task.priority) {
-                    Priority.HIGH -> R.color.priority_high
-                    Priority.MEDIUM -> R.color.priority_medium
-                    Priority.LOW -> R.color.priority_low
-                }
-                priorityIndicator?.setBackgroundColor(ContextCompat.getColor(itemView.context, color))
-
-                checkBox?.setOnCheckedChangeListener { _, isChecked ->
-                    onTaskChecked(task, isChecked)
-                }
-
-                editButton?.setOnClickListener {
-                    onEditClick(task)
-                }
-
-                deleteButton?.setOnClickListener {
-                    onDeleteClick(task)
+            // Set click listeners once in init
+            editButton.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onEditClick(getItem(position))
                 }
             }
-        }
-
-        fun cleanup() {
-            checkBox?.setOnCheckedChangeListener(null)
-            editButton?.setOnClickListener(null)
-            deleteButton?.setOnClickListener(null)
             
-            // Clear references
-            checkBox = null
-            titleText = null
-            descriptionText = null
-            dueDateText = null
-            reminderTimeText = null
-            clockIcon = null
-            editButton = null
-            deleteButton = null
-            priorityIndicator = null
+            deleteButton.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onDeleteClick(getItem(position))
+                }
+            }
+            
+            checkBox.setOnCheckedChangeListener { _, isChecked ->
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onTaskChecked(getItem(position), isChecked)
+                }
+            }
+        }
+
+        fun bind(task: Task) {
+            checkBox.isChecked = task.isCompleted
+            titleText.text = task.title
+            descriptionText.text = task.description
+
+            // Handle due date display and overdue status
+            if (task.dueDate != null) {
+                val now = Calendar.getInstance().time
+                val isOverdue = !task.isCompleted && task.dueDate.before(now)
+                
+                dueDateText.apply {
+                    text = context.getString(R.string.task_due, DateTimeUtils.formatDate(task.dueDate))
+                    setTextColor(ContextCompat.getColor(context, 
+                        if (isOverdue) R.color.overdue_text else android.R.color.white))
+                    visibility = View.VISIBLE
+                }
+            } else {
+                dueDateText.visibility = View.GONE
+            }
+
+            // Handle reminder time display
+            if (task.reminderTime != null) {
+                val formattedTime = DateTimeUtils.formatTime(task.reminderTime)
+                Log.d("TaskAdapter", "Task ${task.id}: Setting reminder time to $formattedTime")
+                
+                clockIcon.visibility = View.VISIBLE
+                reminderTimeText.visibility = View.VISIBLE
+                reminderTimeText.text = formattedTime
+            } else {
+                Log.d("TaskAdapter", "Task ${task.id}: No reminder time")
+                clockIcon.visibility = View.GONE
+                reminderTimeText.visibility = View.GONE
+            }
+
+            val color = when (task.priority) {
+                Priority.HIGH -> R.color.priority_high
+                Priority.MEDIUM -> R.color.priority_medium
+                Priority.LOW -> R.color.priority_low
+            }
+            priorityIndicator.setBackgroundColor(ContextCompat.getColor(itemView.context, color))
         }
     }
 
